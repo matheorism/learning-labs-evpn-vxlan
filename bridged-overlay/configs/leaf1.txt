@@ -1,0 +1,28 @@
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 198.51.100.0/31;
+            }
+        }
+    }
+    ge-0/0/1 {
+        unit 0 {
+            family inet {
+                address 198.51.100.2/31;
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 192.0.2.11/32;
+            }
+        }
+    }
+}
+protocols {
+    lldp {
+        interface all;
+    }
+}

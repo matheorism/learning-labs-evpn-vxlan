@@ -35,7 +35,75 @@ interfaces {
         }
     }
 }
+policy-options {
+    policy-statement allow-loopback {
+        term 1 {
+            from {
+                protocol direct;
+                route-filter 192.0.2.0/24 orlonger;
+            }
+            then accept;
+        }
+        term 2 {
+            from {
+                protocol bgp;
+                route-filter 192.0.2.0/24 orlonger;
+            }                           
+            then accept;
+        }
+        term deny-all {
+            then reject;
+        }
+    }
+}
+routing-options {
+    router-id 192.0.2.101;
+    autonomous-system 65500;
+}
 protocols {
+    bgp {
+        group underlay {
+            type external;
+            family inet {
+                unicast;
+            }
+            export allow-loopback;
+            neighbor 198.51.100.0 {
+                peer-as 65411;
+            }
+            neighbor 198.51.100.4 {
+                peer-as 65412;
+            }
+            neighbor 198.51.100.8 {
+                peer-as 65413;
+            }
+            neighbor 198.51.100.12 {    
+                peer-as 65414;
+            }
+        }
+        group overlay {
+            type external;
+            multihop {
+                no-nexthop-change;
+            }
+            local-address 192.0.2.101;
+            family evpn {
+                signaling;
+            }
+            neighbor 192.0.2.11 {
+                peer-as 65411;
+            }
+            neighbor 192.0.2.12 {
+                peer-as 65412;
+            }
+            neighbor 192.0.2.13 {       
+                peer-as 65413;
+            }
+            neighbor 192.0.2.14 {
+                peer-as 65414;
+            }
+        }
+    }
     lldp {
         interface all;
     }

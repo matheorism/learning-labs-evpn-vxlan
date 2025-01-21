@@ -21,7 +21,57 @@ interfaces {
         }
     }
 }
+policy-options {
+    policy-statement allow-loopback {
+        term 1 {
+            from {
+                protocol direct;
+                route-filter 192.0.2.0/24 orlonger;
+            }
+            then accept;
+        }
+        term deny-all {
+            then reject;
+        }
+    }
+    policy-statement ecmp {
+        then {
+            load-balance per-flow;
+        }
+    }
+}
+routing-options {                       
+    router-id 192.0.2.11;
+    autonomous-system 65411;
+    forwarding-table {
+        export ecmp;
+    }
+}
 protocols {
+    bgp {
+        group underlay {
+            type external;
+            family inet {
+                unicast;
+            }
+            export allow-loopback;
+            peer-as 65500;
+            multipath;
+            neighbor 198.51.100.1;
+            neighbor 198.51.100.3;
+        }
+        group overlay {
+            type external;
+            multihop;
+            local-address 192.0.2.11;
+            family evpn {
+                signaling;
+            }
+            peer-as 65500;
+            neighbor 192.0.2.101;
+            neighbor 192.0.2.102;
+        }
+    }
     lldp {
         interface all;
     }

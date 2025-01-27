@@ -1,3 +1,10 @@
+chassis {
+    aggregated-devices {
+        ethernet {
+            device-count 1;
+        }
+    }
+}
 interfaces {
     ge-0/0/0 {
         unit 0 {
@@ -10,6 +17,33 @@ interfaces {
         unit 0 {
             family inet {
                 address 198.51.100.6/31;
+            }
+        }
+    }
+    ge-0/0/2 {
+        ether-options {
+            802.3ad ae1;
+        }
+    }
+    ae1 {
+        esi {
+            auto-derive {
+                lacp-pe-system-id-and-admin-key;
+            }
+            all-active;
+        }
+        aggregated-ether-options {
+            lacp {
+                active;
+                system-id 00:00:00:00:22:33;
+            }
+        }
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members v10;
+                }
             }
         }
     }
@@ -74,5 +108,22 @@ protocols {
     }
     lldp {
         interface all;
+    }
+    evpn {
+        encapsulation vxlan;
+        extended-vni-list all;
+    }
+}
+switch-options {
+    vtep-source-interface lo0.0;
+    route-distinguisher 192.0.2.12:1;
+    vrf-target target:1:1;
+}
+vlans {
+    v10 {
+        vlan-id 10;
+        vxlan {
+            vni 10010;
+        }
     }
 }

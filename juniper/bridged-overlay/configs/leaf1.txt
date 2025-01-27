@@ -13,6 +13,16 @@ interfaces {
             }
         }
     }
+    ge-0/0/2 {
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members v10;
+                }
+            }
+        }
+    }
     lo0 {
         unit 0 {
             family inet {
@@ -72,7 +82,24 @@ protocols {
             neighbor 192.0.2.102;
         }
     }
+    evpn {
+        encapsulation vxlan;
+        extended-vni-list all;
+    }
     lldp {
         interface all;
+    }
+}
+switch-options {
+    vtep-source-interface lo0.0;
+    route-distinguisher 192.0.2.11:1;
+    vrf-target target:1:1;
+}
+vlans {
+    v10 {
+        vlan-id 10;
+        vxlan {
+            vni 10010;
+        }
     }
 }

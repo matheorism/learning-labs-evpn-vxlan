@@ -27,6 +27,13 @@ interfaces {
             }
         }
     }
+    ge-0/0/4 {
+        unit 0 {
+            family inet {
+                address 198.51.100.19/31;
+            }
+        }
+    }
     lo0 {
         unit 0 {
             family inet {
@@ -80,6 +87,9 @@ protocols {
             neighbor 198.51.100.14 {    
                 peer-as 65414;
             }
+            neighbor 198.51.100.18 {    
+                peer-as 65415;
+            }
         }
         group overlay {
             type external;
@@ -101,6 +111,9 @@ protocols {
             }
             neighbor 192.0.2.14 {
                 peer-as 65414;
+            }
+            neighbor 192.0.2.15 {
+                peer-as 65415;
             }
         }
     }

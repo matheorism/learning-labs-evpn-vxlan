@@ -5,4 +5,4 @@ This lab deploys a bridged overlay design (Layer 2 extension) using Juniper vJun
 
 The topology is:
 
-![bridged-overlay-topology](static/images/juniper-bridged-overlay.png)
+![bridged-overlay-topology](/static/images/juniper-bridged-overlay.png)

@@ -2,3 +2,7 @@ This lab deploys a bridged overlay design (Layer 2 extension) using Juniper vJun
 
 > [!IMPORTANT]
 > Minimum Containerlab version for the deployment of this lab is v0.62.
+
+The topology is:
+
+![bridged-overlay-topology](static/images/juniper-bridged-overlay.png)

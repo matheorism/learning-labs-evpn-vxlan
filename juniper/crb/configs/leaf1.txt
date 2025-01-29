@@ -84,6 +84,11 @@ protocols {
     }
     evpn {
         encapsulation vxlan;
+        vni-options {
+            vni 10010 {
+                vrf-target target:10:10;
+            }
+        }
         extended-vni-list all;
     }
     lldp {

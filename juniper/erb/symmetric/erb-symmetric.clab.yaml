@@ -1,4 +1,4 @@
-name: juniper-crb
+name: juniper-erb-symmetric
 prefix: ""
 mgmt:
   network: clab_mgmt

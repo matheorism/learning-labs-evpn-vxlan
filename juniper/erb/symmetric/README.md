@@ -1,4 +1,4 @@
-This lab deploys a Edge-Routed Bridging design with a symmetric routing model using Juniper vJunos-switch nodes as leafs and spines of a 3-stage Clos fabric. You can deploy the fabric using `containerlab deploy -t erb-asymmetric.clab.yaml`.
+This lab deploys a Edge-Routed Bridging design with a symmetric routing model using Juniper vJunos-switch nodes as leafs and spines of a 3-stage Clos fabric. You can deploy the fabric using `containerlab deploy -t erb-symmetric.clab.yaml`.
 
 > [!IMPORTANT]
 > Minimum Containerlab version for the deployment of this lab is v0.62. A bare metal server is needed for vJunos-switch nodes. Running Containerlab in a VM will not work.

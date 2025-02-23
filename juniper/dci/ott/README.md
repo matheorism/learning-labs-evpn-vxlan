@@ -9,9 +9,9 @@ The topology is shown below. The username/password for vJunos-switch nodes is `a
 
 IP addressing for the servers is as follows:
 
-s1 - 172.16.10.1/24
-s2 - 172.16.10.2/24
-s3 - 172.16.20.3/24
-s4 - 172.16.20.4/24
-s5 - 172.16.10.5/24
-s6 - 172.16.30.6/24
+s1 - 172.16.10.1/24  
+s2 - 172.16.10.2/24  
+s3 - 172.16.20.3/24  
+s4 - 172.16.20.4/24  
+s5 - 172.16.10.5/24  
+s6 - 172.16.30.6/24  

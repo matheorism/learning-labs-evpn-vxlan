@@ -34,26 +34,6 @@ interfaces {
             }
         }
     }
-    irb {
-        unit 10 {
-            proxy-macip-advertisement;
-            virtual-gateway-accept-data;
-            family inet {
-                address 172.16.10.251/24 {
-                    virtual-gateway-address 172.16.10.254;
-                }
-            }
-        }
-        unit 20 {
-            proxy-macip-advertisement;
-            virtual-gateway-accept-data;
-            family inet {
-                address 172.16.20.251/24 {
-                    virtual-gateway-address 172.16.20.254;
-                }                       
-            }
-        }
-    }
     lo0 {
         unit 0 {
             family inet {
@@ -137,41 +117,7 @@ protocols {
             }
         }
     }
-    evpn {
-        encapsulation vxlan;
-        default-gateway no-gateway-community;
-        vni-options {
-            vni 10010 {
-                vrf-target target:10:10;
-            }
-            vni 10020 {
-                vrf-target target:20:20;
-            }
-        }
-        extended-vni-list all;
-    }
     lldp {
         interface all;
-    }
-}
-switch-options {
-    vtep-source-interface lo0.0;
-    route-distinguisher 192.0.2.102:1;
-    vrf-target target:1:1;
-}
-vlans {
-    v10 {
-        vlan-id 10;
-        l3-interface irb.10;
-        vxlan {
-            vni 10010;
-        }
-    }
-    v20 {
-        vlan-id 20;
-        l3-interface irb.20;
-        vxlan {
-            vni 10020;
-        }
     }
 }

@@ -8,13 +8,13 @@ topology:
     kind: juniper_vjunosswitch
   kinds:
     juniper_vjunosswitch:
-      image: aninchat/vjunos-switch:23.4R2
+      image: vrnetlab/juniper_vjunos-switch:24.4R1.9
       startup-config: configs/__clabNodeName__.txt
     juniper_vjunosevolved:
-      image: aninchat/vjunos-evolved:23.4R2
+      image: vrnetlab/juniper_vjunosevolved:24.4R1.8
       startup-config: configs/__clabNodeName__.txt
     linux:
-      image: ghcr.io/srl-labs/network-multitool
+      image: ghcr.io/hellt/network-multitool
       binds:
         - base-configs:/base-configs
   nodes:
